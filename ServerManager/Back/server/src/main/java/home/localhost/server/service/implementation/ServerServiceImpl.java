@@ -1,11 +1,16 @@
 package home.localhost.server.service.implementation;
 
+import static home.localhost.server.enumiration.Status.SERVER_UP;
+
 import home.localhost.server.ServerRepo.ServerRepo;
 import home.localhost.server.enumiration.Status;
 import home.localhost.server.model.Server;
 import home.localhost.server.service.ServerService;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Random;
 import javax.transaction.Transactional;
@@ -40,7 +45,7 @@ public class ServerServiceImpl implements ServerService {
     log.info("Pinging server IP: {}", ipAddress);
     Server server = serverRepo.findServerByIpAddress(ipAddress);
     InetAddress address = InetAddress.getByName(ipAddress);
-    server.setStatus(address.isReachable(10000) ? Status.SERVER_UP : Status.SERVER_DOWN);
+    server.setStatus(address.isReachable(10000) ? SERVER_UP : Status.SERVER_DOWN);
     serverRepo.save(server);
     return server;
   }
@@ -70,6 +75,19 @@ public class ServerServiceImpl implements ServerService {
 
     return Boolean.TRUE;
   }
+
+
+  public Server updateServerNameByHostNameWithOnline(Long id) throws IOException {
+    Server serverFromRepo = serverRepo.findById(id).orElseThrow();
+    InetAddress address = InetAddress.getByName(serverFromRepo.getIpAddress());
+    if (address.isReachable(10000)) {
+      serverFromRepo.setName(InetAddress.getLocalHost().getHostName());
+      serverFromRepo.setStatus(SERVER_UP);
+      return serverFromRepo;
+    }
+    throw new Error("Server is not reachable");
+  }
+
 
   private String setServerImageURL() {
 
