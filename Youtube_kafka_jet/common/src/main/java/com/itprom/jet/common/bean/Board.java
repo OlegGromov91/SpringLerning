@@ -20,11 +20,15 @@ public class Board {
     private double yCoordinate;
     private double angle;
 
-    private boolean noBusy() {
+    public boolean noBusy() {
         return !busy;
     }
 
-    private void calculatePosition(RoutePath routeDirection) {
+    public boolean hasRoute() {
+        return route != null;
+    }
+
+    public void calculatePosition(RoutePath routeDirection) {
         double position = routeDirection.getProgress() / 100;
 
         double toXCoordinate = (1 - position) * routeDirection.getFrom().getXPoint() + position * routeDirection.getTo().getXPoint();

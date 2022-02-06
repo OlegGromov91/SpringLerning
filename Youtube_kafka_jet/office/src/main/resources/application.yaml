@@ -1,0 +1,24 @@
+server:
+  port: 8083
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:29092
+    template:
+      default-topic: officeRoutes
+  consumer:
+    group-id: OfficeGroupId
+    auto-offset-reset: latest
+
+
+application:
+  ports:
+    - name: "Port 1"
+     xCoordinate: 10
+     yCoordinate: 20
+    - name: "Port 2"
+     xCoordinate: 70
+     yCoordinate: 40
+    - name: "Port 3"
+     xCoordinate: 50
+     yCoordinate: 80

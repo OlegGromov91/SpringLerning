@@ -16,5 +16,9 @@ public class RoutePoint {
     private double xPoint;
     private double yPoint;
 
-
+    public RoutePoint(Airport airport) {
+        this.nameLocation = airport.getName();
+        this.xPoint = airport.getXCoordinate();
+        this.yPoint = airport.getYCoordinate();
+    }
 }

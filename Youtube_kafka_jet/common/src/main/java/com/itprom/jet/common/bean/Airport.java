@@ -17,7 +17,7 @@ public class Airport {
     private int xCoordinate;
     private int yCoordinate;
 
-    private void addBoard(String boardName) {
+    public void addBoard(String boardName) {
         int index = boards.indexOf(boardName);
         if (index >= 0) {
             boards.set(index, boardName);
@@ -26,7 +26,7 @@ public class Airport {
         }
     }
 
-    private void removeBoard(String boardName) {
+    public void removeBoard(String boardName) {
         boards.remove(boardName);
     }
 
