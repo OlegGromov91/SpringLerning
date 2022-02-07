@@ -1,15 +1,15 @@
 package com.itprom.jet.office.config;
 
-import com.github.benmanes.caffeine.cache.Cache;
-import com.itprom.jet.common.messages.OfficeStateMessage;
-import com.itprom.jet.common.processor.MessageConverter;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
+import com.github.benmanes.caffeine.cache.Cache;
+import com.itprom.jet.common.messages.OfficeStateMessage;
+import com.itprom.jet.common.processor.MessageConverter;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Component
