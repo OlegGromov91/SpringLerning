@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+<h3>List of books</h3>
+<table class="centered">
+      <tr>
+          <th>Name</th>
+          <th>Author</th>
+      </tr>
+    <tr th:each="book:${books}">
+        <td th:text="${book.name}"></td>
+        <td th:text="${book.author}"></td>
+    </tr>
+</table>
+</body>
+</html>
